@@ -16,6 +16,7 @@ print('system: {}, eofkey: {}'.format(platform.system(), eofkey))
 
 samples = OrderedDict([
     (speech_sample, [
+        speech_sample.speech_continuous_recognition_async_from_mic,
         speech_sample.speech_recognize_once_from_mic,
         speech_sample.speech_recognize_once_from_file,
         speech_sample.speech_recognize_once_from_file_with_customized_model,
