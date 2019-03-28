@@ -32,19 +32,18 @@ service_region = "westus"
 # kHz).
 weatherfilename = "whatstheweatherlike.wav"
 
+
 # reference: https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/13
 def speech_continuous_recognition_async_from_mic():
     """performs continuous speech recognition from the default microphone"""
     # <SpeechRecognitionWithMicrophone>
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
     
-    # TODO: The device_name isn't correct
     # https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-select-audio-input-devices
-    # audio_config = speechsdk.audio.AudioConfig(device_name="Built-in Microphone")
-    # audio_config = speechsdk.audio.AudioConfig(device_name="Loopback Audio")
+    audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
     
     # The default language is "en-us".
-    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
+    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
     done = False
  
@@ -69,6 +68,7 @@ def speech_continuous_recognition_async_from_mic():
     speech_recognizer.start_continuous_recognition()
     while not done:
         time.sleep(.5)
+
 
 def speech_recognize_once_from_mic():
     """performs one-shot speech recognition from the default microphone"""
