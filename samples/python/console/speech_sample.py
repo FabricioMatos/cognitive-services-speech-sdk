@@ -56,8 +56,8 @@ def speech_continuous_recognition_async_from_mic():
         done = True
  
     # Connect callbacks to the events fired by the speech recognizer
-    speech_recognizer.recognizing.connect(lambda evt: print('RECOGNIZING: {}'.format(evt)))
-    speech_recognizer.recognized.connect(lambda evt: print('RECOGNIZED: {}'.format(evt)))
+    speech_recognizer.recognizing.connect(lambda evt: print('{}'.format(evt.result.text)))
+    speech_recognizer.recognized.connect(lambda evt: print('{} \n[NEW PARAGRAPH]'.format(evt.result.text)))
     speech_recognizer.session_started.connect(lambda evt: print('SESSION STARTED: {}'.format(evt)))
     speech_recognizer.session_stopped.connect(lambda evt: print('SESSION STOPPED {}'.format(evt)))
     speech_recognizer.canceled.connect(lambda evt: print('CANCELED {}'.format(evt)))
