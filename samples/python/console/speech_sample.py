@@ -22,7 +22,11 @@ except ImportError:
 
 # Set up the subscription info for the Speech Service:
 # Replace with your own subscription key and service region (e.g., "westus").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+print("Enter your Azure subscription Key for the cognitive api:")
+speech_key = input()
+print("You entered:", speech_key)
+
+service_region = "westus"
 
 # Specify the path to an audio file containing speech (mono WAV / PCM with a sampling rate of 16
 # kHz).
